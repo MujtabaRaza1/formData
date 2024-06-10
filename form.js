@@ -23,12 +23,12 @@ function toggleHiddenCheckbox() {
                 Name: document.getElementById('first-name').value + " " + document.getElementById('last-name').value,
                 Phone: document.getElementById('phone').value,
                 Email: document.getElementById('email').value,
-                Zip_Code: document.getElementById('zip-code').value,
-                Heard_about_us_from: document.getElementById('hear-us').value,
-                Care_Duration_Required: document.getElementById('comments').value,
                 Interested_in_services: Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(function(checkbox) {
                     return '- ' + checkbox.nextElementSibling.textContent.trim(); // Prepend '-' to each item
-                }).join('\n')
+                }).join('\n'),
+                Zip_Code: document.getElementById('zip-code').value,
+                Heard_about_us_from: document.getElementById('hear-us').value,
+                Care_Duration_Required: document.getElementById('comments').value
             };
             console.log(formData);
             sendFormToWeb3Forms(formData); // Send form data
