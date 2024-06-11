@@ -33,6 +33,18 @@ function toggleHiddenCheckbox() {
             console.log(formData);
             sendFormToWeb3Forms(formData); // Send form data
         }
+        function showPopup() {
+            document.getElementById('popup').style.display = 'block';
+            document.getElementById('popup').classList.add('visible');
+            document.getElementById('pricing-form').style.opacity = 0.5;
+        }
+    
+        // Function to close the popup
+        function closePopup() {
+            document.getElementById('popup').classList.remove('visible');
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('pricing-form').style.opacity = 1;
+        }
 
         function sendFormToWeb3Forms(formData) {
             fetch('https://api.web3forms.com/submit', {
@@ -45,7 +57,7 @@ function toggleHiddenCheckbox() {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    alert('Email sent successfully!');
+                    showPopup();
                 } else {
                     console.error('Error:', data.message);
                 }
